@@ -1,0 +1,26 @@
+<div class="col-md-12 user-container">
+    <h2 class="text-center">{{manageEmployeeTitle}}</h2>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input formControlName="name" placeholder="Name" name="name" class="form-control" id="name">
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input formControlName="lastName" placeholder="Last name" name="lastName" class="form-control"
+                id="lastName">
+        </div>
+
+        <div class="form-group">
+            <label for="mediaInteractiva">From Media Interactiva:</label>
+            <select formControlName="mediaInteractiva" name="mediaInteractiva" class="form-control" id="mediaInteractiva">
+                <option [ngValue]="true">Yes</option>
+                <option [ngValue]="false">No</option>
+            </select>
+        </div>
+
+        <button class="btn btn-success">Add</button>
+    </form>
+</div>

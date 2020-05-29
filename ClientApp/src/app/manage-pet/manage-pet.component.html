@@ -1,0 +1,27 @@
+<div class="col-md-12 user-container">
+    <h2 class="text-center">{{managePetTitle}}</h2>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input formControlName="name" placeholder="Name" name="name" class="form-control" id="name">
+        </div>
+
+        <div class="form-group">
+            <label for="type">Type:</label>
+            <input formControlName="type" placeholder="Animal Type" name="type" class="form-control"
+                id="type">
+        </div>
+
+        <div class="form-group">
+            <label for="employee">Owner:</label>
+            <select formControlName="employee" name="employee" class="form-control" id="employee">
+                <option *ngFor="let employee of employees" [ngValue]="employee.employeeId">
+                    {{ employee.name }}  {{ employee.lastName }} ( ID: {{employee.employeeId}} ) 
+                </option>
+            </select>
+        </div>
+
+        <button class="btn btn-success">Add</button>
+    </form>
+</div>

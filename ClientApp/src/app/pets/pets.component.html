@@ -1,0 +1,41 @@
+<h1 id="tableLabel">Pet Administration</h1>
+
+
+<div class="row">
+  <div class="col-8">
+    <p>In this page you can list, register, delete or edit all the pets.</p>
+  </div>
+  <div class="col-4 text-center" >
+    <button class="btn btn-primary mb-3" (click)="addPet()"> Add Pet</button>
+  </div>
+</div>
+
+<p *ngIf="!pets"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pets">
+  <thead>
+    <tr class="text-center">
+      <th>Internal ID number</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Owner</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pet of pets" class="text-center">
+      <td>{{ pet.petId }}</td>
+      <td>{{ pet.name }}</td>
+      <td>{{ pet.type }}</td>
+      <td>{{ pet.employee }}</td>
+      <td>
+        <span class="table-remove">
+          <button type="button" mdbBtn rounded="true" size="sm" class="btn btn-danger m-1" (click)="deletePet(pet.petId)">Remove</button>
+        </span>
+        <span class="table-edit">
+          <button class="btn btn-primary m-1" type="button" rounded="true" size="sm" (click)="modifyPet(pet)">Modify</button>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

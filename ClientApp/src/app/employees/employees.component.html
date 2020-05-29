@@ -1,0 +1,44 @@
+<h1 id="tableLabel">Employee Administration</h1>
+
+<div class="row">
+  <div class="col-8">
+    <p>In this page you can list, register, delete or edit all the employees interested in the application.</p>
+  </div>
+  <div class="col-4 text-center" >
+    <button class="btn btn-primary mb-3" (click)="addEmployee()"> Add Employee</button>
+  </div>
+</div>
+
+<p *ngIf="!employees"><em>Loading...</em></p>
+
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="employees">
+  <thead>
+    <tr class="text-center">
+      <th>Internal ID number</th>
+      <th>Name</th>
+      <th>Last Name</th>
+      <th>From Media Interactiva</th>
+      <th>Pets</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees" class="text-center">
+      <td>{{ employee.employeeId }}</td>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.lastName }}</td>
+      <td *ngIf="employee.mediaInteractiva == true">Yes</td>
+      <td *ngIf="employee.mediaInteractiva == false">No</td>
+      <td>{{ employee.petsOwned }}</td>
+      <td>
+        <span class="table-remove">
+          <button class="btn btn-danger m-1" type="button" rounded="true" size="sm" (click)="deleteEmployee(employee.employeeId)">Remove</button>
+        </span>
+        <span class="table-edit">
+          <button class="btn btn-primary m-1" type="button" rounded="true" size="sm" (click)="modifyEmployee(employee)">Modify</button>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
